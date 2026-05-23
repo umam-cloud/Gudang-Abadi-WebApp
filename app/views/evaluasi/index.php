@@ -72,7 +72,7 @@
                                 <?php endif; ?>
                             </td>
                             <td class="px-5 py-4 border-b border-slate-200 dark:border-gray-700 text-center">
-                                <a href="index.php?controller=relasi&action=detail&id=<?= $c['id'] ?>" class="btn-sm bg-danger text-white hover:bg-red-600 transition-colors inline-block no-underline">
+                                <a href="index.php?controller=relasi&action=detail&id=<?= $c['relasi_id'] ?>" class="btn-sm bg-danger text-white hover:bg-red-600 transition-colors inline-block no-underline">
                                     Catat Evaluasi Klien
                                 </a>
                             </td>

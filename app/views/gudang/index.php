@@ -108,22 +108,22 @@
                                 <td class="px-5 py-4 border-b border-slate-200 dark:border-gray-700 font-bold text-slate-800 dark:text-gray-200"><?= htmlspecialchars($t['nama_barang']) ?></td>
                                 <td class="px-5 py-4 border-b border-slate-200 dark:border-gray-700">
                                     <?php
-                                    if ($t['jenis_transaksi'] == 'pembelian') {
+                                    if ($t['tipe_transaksi'] == 'pembelian' || $t['tipe_transaksi'] == 'beli_baru') {
                                         echo '<span class="badge badge-success">Baru/Beli</span>';
-                                    } elseif ($t['jenis_transaksi'] == 'refill') {
+                                    } elseif ($t['tipe_transaksi'] == 'refill') {
                                         echo '<span class="badge badge-info">Refill / Isi Ulang</span>';
-                                    } elseif ($t['jenis_transaksi'] == 'penjualan') {
+                                    } elseif ($t['tipe_transaksi'] == 'penjualan' || $t['tipe_transaksi'] == 'jual_rusak') {
                                         echo '<span class="badge badge-danger">Penjualan/Pemusnahan</span>';
                                     } else {
-                                        echo '<span class="badge bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-300 border-none">' . htmlspecialchars($t['jenis_transaksi']) . '</span>';
+                                        echo '<span class="badge bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-300 border-none">' . htmlspecialchars($t['tipe_transaksi']) . '</span>';
                                     }
                                     ?>
                                 </td>
                                 <td class="px-5 py-4 border-b border-slate-200 dark:border-gray-700">
-                                    <?php if ($t['jumlah_perubahan'] > 0): ?>
-                                        <span class="text-success font-bold">+<?= $t['jumlah_perubahan'] ?></span>
+                                    <?php if ($t['jumlah'] > 0): ?>
+                                        <span class="text-success font-bold">+<?= $t['jumlah'] ?></span>
                                     <?php else: ?>
-                                        <span class="text-danger font-bold"><?= $t['jumlah_perubahan'] ?></span>
+                                        <span class="text-danger font-bold"><?= $t['jumlah'] ?></span>
                                     <?php endif; ?>
                                 </td>
                                 <td class="px-5 py-4 border-b border-slate-200 dark:border-gray-700 text-slate-800 dark:text-gray-200"><?= htmlspecialchars($t['keterangan'] ?: '-') ?></td>
