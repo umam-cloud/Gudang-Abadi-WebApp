@@ -32,6 +32,29 @@
             <input type="text" id="searchMitra" class="w-full pl-10 py-2.5 text-sm bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-600 focus:border-primary dark:focus:border-primary focus:outline-none ring-0 ring-transparent focus:ring-4 focus:ring-primary/10 dark:focus:ring-primary/20 rounded-xl text-slate-800 dark:text-gray-100 placeholder-slate-400 dark:placeholder-gray-500 transition-colors duration-200 shadow-sm" placeholder="Cari nama atau kode mitra...">
         </div>
     </div>
+    <?php 
+    $totals = [];
+    $grandTotal = 0;
+    foreach ($barangList as $b) {
+        $totals[$b['id']] = 0;
+    }
+    if (!empty($clients)) {
+        foreach ($clients as $c) {
+            foreach ($c['stocks'] as $st) {
+                if (isset($totals[$st['barang_id']])) {
+                    $totals[$st['barang_id']] += $st['stok_akhir'];
+                    $grandTotal += $st['stok_akhir'];
+                }
+            }
+        }
+    }
+    ?>
+    <?php if (!empty($clients)): ?>
+    <div class="inline-flex items-center gap-3 mb-6 bg-indigo-50/50 dark:bg-indigo-500/10 px-5 py-3 rounded-xl border border-primary/20 shadow-sm">
+        <span class="text-sm font-bold text-slate-700 dark:text-gray-300">TOTAL SELURUH TABUNG BEREDAR:</span>
+        <span class="text-xl font-extrabold text-primary"><?= $grandTotal ?></span>
+    </div>
+    <?php endif; ?>
     
     <div class="overflow-x-auto border border-slate-200 dark:border-gray-700 rounded-xl">
         <table class="w-full text-sm text-left whitespace-nowrap">
